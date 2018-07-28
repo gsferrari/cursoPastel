@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro de Pasteis</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="nomePastel">Nome</label>
+        <input type="text" name="nomePastel" id="nome">
+        <br>
+        <label for="saborPastel">Sabor</label>
+        <input type="text" name="saborPastel" id="sabor">
+        <br>
+        <label for="descPastel">Descrição</label>
+        <input type="text" name="descPastel" id="descricao">
+        <br>
+        <label for="precoPastel">Preço</label>
+        <input type="text" name="precoPastel" id="preco">
+        <br>
+        <label for="qtdePastel">Quantidade</label>
+        <input type="text" name="qtdePastel" id="qtde">
+        <br>
+        <button>Enviar</button>
+    </form>
+</body>
+<script>
+    function geraPastel() {
+        var pastel = {
+            nomePastel: document.getElementById("nome").value,
+            saborPastel: document.getElementById("sabor").value,
+            descPastel: document.getElementById("descricao").value,
+            precoPastel: document.getElementById("preco").value,
+            qtdePastel: document.getElementById("qtde").value
+        }
+    }
+</script>
+</html>
