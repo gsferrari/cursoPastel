@@ -6,37 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cadastro de Pasteis</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-    <form action="">
-        <label for="nomePastel">Nome</label>
-        <input type="text" name="nomePastel" id="nome">
-        <br>
-        <label for="saborPastel">Sabor</label>
-        <input type="text" name="saborPastel" id="sabor">
-        <br>
-        <label for="descPastel">Descrição</label>
-        <input type="text" name="descPastel" id="descricao">
-        <br>
-        <label for="precoPastel">Preço</label>
-        <input type="text" name="precoPastel" id="preco">
-        <br>
-        <label for="qtdePastel">Quantidade</label>
-        <input type="text" name="qtdePastel" id="qtde">
-        <br>
-        <button>Enviar</button>
-    </form>
+    <div class="container">
+        <form action="">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <label for="nomePastel">Nome</label>
+                        <input type="text" class="form-control" name="nomePastel" id="nome">
+                    </div>
+                    <div class="form-group">
+
+                        <label for="saborPastel">Sabor</label>
+                        <input type="text" class="form-control" name="saborPastel" id="sabor">
+                    </div>
+                    <div class="form-group">
+                        <label for="descPastel">Descrição</label>
+                        <input type="text" class="form-control" name="descPastel" id="descricao">
+                    </div>
+                    <div class="form-group">
+                        <label for="precoPastel">Preço</label>
+                        <input type="text" class="form-control" name="precoPastel" id="preco">
+                    </div>
+                    <div class="form-group">
+                        <label for="qtdePastel">Quantidade</label>
+                        <input type="text" class="form-control" name="qtdePastel" id="qtde">
+                    </div>
+                    <button type="button" onclick="geraPastel()">Enviar
+
+                    </button>
+                </div>
+                <br>
+            </div>
+            
+        </form>
+
+    </div>
 </body>
+
+
 <script>
     function geraPastel() {
         var pastel = {
-            nomePastel: document.getElementById("nome").value,
-            saborPastel: document.getElementById("sabor").value,
-            descPastel: document.getElementById("descricao").value,
-            precoPastel: document.getElementById("preco").value,
-            qtdePastel: document.getElementById("qtde").value
+            nome: document.getElementById("nome").value,
+            sabor: document.getElementById("sabor").value,
+            descricao: document.getElementById("descricao").value,
+            preco: document.getElementById("preco").value,
+            qtde: document.getElementById("qtde").value
         }
+
+        $.ajax({
+            url: "https://talentosapipastel.herokuapp.com/pastel",
+            type: "POST",
+            data: JSON.stringify(pastel),
+            contentType: "application/json"
+        }).done(function (data) {
+            alert("Sucesso! Pastel cadastrado! :-)");
+        }).fail(function (retorno) {
+            console.log(retorno);
+            alert("Ocorreu um erro! :-(");
+        });
+
     }
+
+
+
+
 </script>
+
+
+
+
 </html>
